@@ -1,0 +1,34 @@
+M:\dev_env\extract_dataset_from_website
+├── .gitignore
+├── .idea
+│   ├── .gitignore
+│   ├── extract_dataset_from_website.iml
+│   ├── inspectionProfiles
+│   │   └── profiles_settings.xml
+│   ├── misc.xml
+│   ├── modules.xml
+│   ├── vcs.xml
+│   └── workspace.xml
+├── LICENSE
+├── README.md
+├── admin
+│   ├── create_folder_structure.py
+│   └── download-model.py
+├── config_files
+│   └── #add your configurationfiles in this folder#
+├── crawler.log
+├── data
+│   └── web_crawling.db
+├── docs
+│   └── web_crawling_best_practices.md
+├── requirements.txt
+├── src
+│   ├── __pycache__
+│   │   ├── crawler.cpython-311.pyc
+│   │   └── database.cpython-311.pyc
+│   ├── crawler.py
+│   ├── database.py
+│   └── main.py
+└── websites_to_scrape.txt
+
+Script last modified: 2023-10-05 12:39:46

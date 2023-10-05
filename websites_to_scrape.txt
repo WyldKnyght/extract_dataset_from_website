@@ -1,0 +1,5 @@
+https://www.scrapethissite.com/
+https://crawler-test.com/
+http://httpbin.org/
+https://the-internet.herokuapp.com/
+https://toscrape.com/

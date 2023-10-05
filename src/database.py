@@ -42,9 +42,7 @@ def store_website_data(url, robots_txt_data):
         if existing_website:
             print(f"Website '{url}' already crawled. Skipping...")
         else:
-            cursor.execute(
-                'INSERT INTO robots_txt_data (url, date_crawled, robots_txt_content, disallowed_paths, crawl_delay, '
-                'sitemap_urls) VALUES (?, ?, ?, ?, ?, ?)',
-                (url, datetime.now(), robots_txt_data['content'], robots_txt_data['disallowed_paths'],
-                 robots_txt_data['crawl_delay'], robots_txt_data['sitemap_urls'],))
+            query = 'INSERT INTO robots_txt_data (url, date_crawled, robots_txt_content, disallowed_paths, crawl_delay, sitemap_urls, robots_directives) VALUES (?, ?, ?, ?, ?, ?, ?)'
+            values = (url, datetime.now(), robots_txt_data['content'], robots_txt_data['disallowed'], robots_txt_data['crawl_delay'], robots_txt_data['sitemap_urls'], str(robots_txt_data['robots_directives']))
+            cursor.execute(query, values)
             print(f"Website '{url}' crawled, and robots.txt content stored.")
