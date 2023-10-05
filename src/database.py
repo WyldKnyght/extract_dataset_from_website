@@ -9,16 +9,19 @@ def initialize_database():
     """
     database_path = 'data/web_crawling.db'
     create_table_query = '''
-        CREATE TABLE IF NOT EXISTS robots_txt_data (
-            id INTEGER PRIMARY KEY,
-            url TEXT UNIQUE,
-            date_crawled TEXT,
-            robots_txt_content TEXT,
-            disallowed_paths TEXT,
-            crawl_delay TEXT,
-            sitemap_urls TEXT
-        )
-    '''
+    CREATE TABLE IF NOT EXISTS robots_txt_data (
+        id INTEGER PRIMARY KEY,
+        url TEXT UNIQUE,
+        date_crawled TEXT,
+        robots_txt_content TEXT,
+        disallowed_paths TEXT,
+        crawl_delay TEXT,
+        sitemap_urls TEXT,
+        robots_directives TEXT,
+        parsed_rules TEXT
+    )
+'''
+
 
     with sqlite3.connect(database_path) as conn:
         cursor = conn.cursor()
@@ -26,14 +29,6 @@ def initialize_database():
 
 
 def store_website_data(url, robots_txt_data):
-    """
-    Store website data in the database if it doesn't already exist.
-    Args:
-        url (str): The URL of the website.
-        robots_txt_data (dict): The data of the robots.txt file.
-    Returns:
-        None
-    """
     with sqlite3.connect('data/web_crawling.db') as conn:
         cursor = conn.cursor()
         cursor.execute('SELECT id FROM robots_txt_data WHERE url = ?', (url,))
@@ -42,7 +37,8 @@ def store_website_data(url, robots_txt_data):
         if existing_website:
             print(f"Website '{url}' already crawled. Skipping...")
         else:
-            query = 'INSERT INTO robots_txt_data (url, date_crawled, robots_txt_content, disallowed_paths, crawl_delay, sitemap_urls, robots_directives) VALUES (?, ?, ?, ?, ?, ?, ?)'
-            values = (url, datetime.now(), robots_txt_data['content'], robots_txt_data['disallowed'], robots_txt_data['crawl_delay'], robots_txt_data['sitemap_urls'], str(robots_txt_data['robots_directives']))
+            query = 'INSERT INTO robots_txt_data (url, date_crawled, robots_txt_content, disallowed_paths, crawl_delay, sitemap_urls, robots_directives, parsed_rules) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
+            values = (url, datetime.now(), robots_txt_data['content'], robots_txt_data['disallowed'], robots_txt_data['crawl_delay'], robots_txt_data['sitemap_urls'], str(robots_txt_data['robots_directives']), str(robots_txt_data['parsed_rules']))
             cursor.execute(query, values)
             print(f"Website '{url}' crawled, and robots.txt content stored.")
+
