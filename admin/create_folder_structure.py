@@ -38,7 +38,7 @@ def generate_folder_structure(root_dir, output_file=None, excluded_dirs=None):
 if __name__ == "__main__":
     project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
     output_filename = os.path.join(project_root, "folder_structure.txt")
-    excluded_dirs = {".git", ".chainlit", ".venv",".vs",".my_files"}
+    excluded_dirs = {".git", ".chainlit", ".venv",".vs",".my_files",".idea"}
 
     print(f"Project Folder Structure for: {project_root}")
     generate_folder_structure(project_root, output_file=output_filename, excluded_dirs=excluded_dirs)

@@ -1,14 +1,5 @@
 M:\dev_env\extract_dataset_from_website
 ├── .gitignore
-├── .idea
-│   ├── .gitignore
-│   ├── extract_dataset_from_website.iml
-│   ├── inspectionProfiles
-│   │   └── profiles_settings.xml
-│   ├── misc.xml
-│   ├── modules.xml
-│   ├── vcs.xml
-│   └── workspace.xml
 ├── LICENSE
 ├── README.md
 ├── admin
@@ -21,14 +12,16 @@ M:\dev_env\extract_dataset_from_website
 │   └── web_crawling.db
 ├── docs
 │   └── web_crawling_best_practices.md
+├── folder_structure.txt
 ├── requirements.txt
 ├── src
 │   ├── __pycache__
 │   │   ├── crawler.cpython-311.pyc
 │   │   └── database.cpython-311.pyc
+│   ├── app.py
 │   ├── crawler.py
 │   ├── database.py
 │   └── main.py
 └── websites_to_scrape.txt
 
-Script last modified: 2023-10-05 12:39:46
+Script last modified: 2023-10-06 12:03:42
